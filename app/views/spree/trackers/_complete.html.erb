@@ -1,0 +1,45 @@
+<p>
+  <%= t('spree_order_tracker.your_order_status_is') %>: <%= @order.state %>
+</p>
+<table>
+  <tr>
+    <td><%= t(:shipping_address) %></td>
+    <td>
+      <%= @order.ship_address.full_name %><br />
+      <%= @order.ship_address.address1 %><br />
+      <% if @order.ship_address.address2.present? %>
+        <%= @order.ship_address.address2 %><br />
+      <% end %>
+      <%= @order.ship_address.city %>,
+      <%= @order.ship_address.state.try(:abbr) || @order.ship_address.state %>
+      <%= @order.ship_address.zipcode %>
+    </td>
+  </tr>
+  <tr>
+    <td><%= t(:shipped_on) %></td>
+    <td><%= @order.shipment.shipped_at.strftime('%B %d, %Y') %></td>
+  </tr>
+  <tr>
+    <td><%= t(:tracking_number) %></td>
+    <td><%= @order.shipment.tracking %></td>
+  </tr>
+</table>
+<% if @order.shipment.tracking_events.present? %>
+  <h3><%= t(:shipment_progress) %></h3>
+  <table>
+    <thead>
+      <th><%= t(:location) %></th>
+      <th><%= t(:date_time) %></th>
+      <th><%= t(:activity) %></th>
+    </thead>
+    <tbody>
+      <% @order.shipment.tracking_events.each do |event| %>
+        <tr>
+          <td><%= "#{event.location.city}, #{event.location.state}" %></td>
+          <td><%= event.time %></td>
+          <td><%= event.name %> <%= event.message %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

@@ -3,16 +3,16 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_order_tracker'
   s.version     = '1.1.3'
-  s.summary     = 'TODO: Add gem summary here'
-  s.description = 'TODO: Add (optional) gem description here'
-  s.required_ruby_version = '>= 1.8.7'
+  s.summary     = 'Track your Spree Order'
+  s.description = 'Tracking orders in a Spree Extension'
+  s.required_ruby_version = '>= 1.9.2'
 
-  # s.author    = 'You'
-  # s.email     = 'you@example.com'
-  # s.homepage  = 'http://www.spreecommerce.com'
+  s.author    = ['Jeff Dutil', 'Vladimir Fedorov']
+  s.email     = ['jdutil@burlingtonwebapps.com', 'vlad@railsdog.com']
+  s.homepage  = 'http://www.spreecommerce.com/extensions'
 
-  #s.files       = `git ls-files`.split("\n")
-  #s.test_files  = `git ls-files -- {test,spec,features}/*`.split("\n")
+  s.files       = `git ls-files`.split("\n")
+  s.test_files  = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.require_path = 'lib'
   s.requirements << 'none'
 
@@ -23,4 +23,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'ffaker'
   s.add_development_dependency 'rspec-rails',  '~> 2.9'
   s.add_development_dependency 'sqlite3'
+  s.add_development_dependency 'shoulda-matchers'
+  s.add_development_dependency 'simplecov'
 end

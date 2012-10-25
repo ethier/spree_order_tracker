@@ -1,13 +1,7 @@
 SpreeOrderTracker
 =================
 
-Introduction goes here.
-
-
-Example
-=======
-
-Example goes here.
+Adds ability to track orders.
 
 Testing
 -------
@@ -18,4 +12,10 @@ Be sure to bundle your dependencies and then create a dummy test app for the spe
     $ bundle exec rake test_app
     $ bundle exec rspec spec
 
-Copyright (c) 2012 [name of extension creator], released under the New BSD License
+TODO
+----
+
+1. Have request specs check an order with each different state.
+1. Make sure all text is in translations
+
+Copyright (c) 2012 Jeff Dutil, released under the New BSD License

@@ -1,23 +1,30 @@
 class Spree::TrackersController < Spree::BaseController
+
   def create
-    @order = Spree::Order.find_for_tracking(params[:order_number], params[:email])
-    if @order
-      session[:tracked_order_id] = @order.try(:id)
-      redirect_to "http://localhost:3000/trackers/show"
+    @tracker = Spree::Tracker.new(params[:tracker])
+    if @tracker.valid? and order = @tracker.order
+      session[:tracked_order_id] = order.id
+      redirect_to tracker_path(order)
     else
-      flash[:error] = I18n.t('orders_tracker.couldnt_find_order')
-      redirect_to "http://localhost:3000/trackers/new"
+      flash[:error] = I18n.t('spree_order_tracker.couldnt_find_order')
+      render :new
     end
+  end
+
+  def new
+    @tracker = Spree::Tracker.new
   end
 
   def show
     @order = Spree::Order.find_by_id(session[:tracked_order_id])
-    redirect_to new_tracker_url and return if @order.nil?
-    render :template => "orders/show"
+    unless @order
+      redirect_to new_tracker_path
+    end
   end
 
   def destroy
     session[:tracked_order_id] = nil
-    redirect_to root_url
+    redirect_to root_path
   end
+
 end
