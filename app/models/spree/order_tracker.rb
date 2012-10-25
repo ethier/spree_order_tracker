@@ -1,5 +1,5 @@
 module Spree
-  class Tracker
+  class OrderTracker
     include ActiveModel::Conversion
     include ActiveModel::Validations
 

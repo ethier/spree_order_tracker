@@ -18,6 +18,7 @@ require File.expand_path('../dummy/config/environment.rb',  __FILE__)
 
 require 'rspec/rails'
 require 'capybara/rails'
+require 'database_cleaner'
 require 'ffaker'
 require 'shoulda-matchers'
 
@@ -42,8 +43,19 @@ RSpec.configure do |config|
   config.include Spree::Core::UrlHelpers
   config.include Spree::Core::TestingSupport::ControllerRequests
 
-  # If you're not using ActiveRecord, or you'd prefer not to run each of your
-  # examples within a transaction, remove the following line or assign false
-  # instead of true.
-  config.use_transactional_fixtures = true
+  # Set to false for running JS drivers.
+  config.use_transactional_fixtures = false
+
+  config.before :each do
+    if example.metadata[:js]
+      DatabaseCleaner.strategy = :truncation
+    else
+      DatabaseCleaner.strategy = :transaction
+    end
+    DatabaseCleaner.start
+  end
+
+  config.after :each do
+    DatabaseCleaner.clean
+  end
 end

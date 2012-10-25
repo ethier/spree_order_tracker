@@ -1,0 +1,18 @@
+<h1><%= t('.track_my_order') %></h1>
+<p><%= t('.tracking_the_status_is_easy') %></p>
+<%= render :partial => 'spree/shared/error_messages', :locals => { :target => @tracker } %>
+<%= form_for @tracker do |f| %>
+  <p>
+    <%= f.label :number %>
+    <span class="required">*</span><br/>
+    <%= f.text_field :number %>
+  </p>
+  <p>
+    <%= f.label :email %>
+    <span class="required">*</span><br/>
+    <%= f.email_field :email %>
+  </p>
+  <p>
+    <%= f.submit t('.track_your_order'), :alt => t('.track_your_order'), :title => t('.track_your_order') %>
+  </p>
+<% end -%>

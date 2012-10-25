@@ -3,6 +3,31 @@ SpreeOrderTracker
 
 Adds ability to track orders.
 
+Requirements
+------------
+
+* Spree Core 1.1.0 or greater
+* Spree Active Shipping
+* Ruby 1.9.2 or greater.
+
+Installation
+------------
+
+In your `Gemfile`, add the following dependencies:
+
+To install from edge:
+
+    gem 'spree_order_tracker', github: 'jdutil/spree_order_tracker'
+
+Or install from a stable branch:
+
+    gem 'spree_order_tracker', github: 'jdutil/spree_order_tracker', branch: '1-1-stable'
+
+From `Rails.root` run:
+
+    $ bundle
+    $ bundle exec rails g spree_order_tracker:install
+
 Testing
 -------
 

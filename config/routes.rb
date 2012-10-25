@@ -1,6 +1,6 @@
 Spree::Core::Engine.routes.draw do
 
-  resources :trackers, only: [:create, :destroy, :new, :show]
-  match 'track' => 'trackers#new', as: :track
+  resources :order_trackers, only: [:create, :destroy, :new, :show]
+  match 'track' => 'order_trackers#new', as: :track
 
 end

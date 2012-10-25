@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Spree::Tracker do
+describe Spree::OrderTracker do
 
   it_should_behave_like 'ActiveModel'
 
@@ -22,12 +22,12 @@ describe Spree::Tracker do
     describe '#order' do
 
       it 'should return nil if tracker is invalid or order not found' do
-        tracker = Spree::Tracker.new(:email => "Valid@Email.com", :number => "")
+        tracker = Spree::OrderTracker.new(:email => "Valid@Email.com", :number => "")
         tracker.order.should be_nil
       end
 
       it 'should return order if valid' do
-        tracker = Spree::Tracker.new(:email => "Valid@Email.com", :number => @order.number)
+        tracker = Spree::OrderTracker.new(:email => "Valid@Email.com", :number => @order.number)
         tracker.order.should eql(@order)
       end
 
@@ -36,12 +36,12 @@ describe Spree::Tracker do
     describe '#save' do
 
       it 'should return false if records invalid' do
-        tracker = Spree::Tracker.new(:email => "Valid@Email.com", :number => "")
+        tracker = Spree::OrderTracker.new(:email => "Valid@Email.com", :number => "")
         tracker.save.should eql(false)
       end
 
       it 'should return true if records valid' do
-        tracker = Spree::Tracker.new(:email => "Valid@Email.com", :number => @order.number)
+        tracker = Spree::OrderTracker.new(:email => "Valid@Email.com", :number => @order.number)
         tracker.save.should eql(true)
       end
 

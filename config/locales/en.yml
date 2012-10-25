@@ -3,10 +3,10 @@
 
 en:
   spree:
-    trackers:
+    order_trackers:
+      create:
+        error: "Could not find order with the provided number and email address."
       new:
         track_my_order: 'Track My Order'
+        track_your_order: "Track your order"
         tracking_the_status_is_easy: "Tracking the status of your order is super easy. Just enter the order number and email address (the one you used to place the order) and you're good to go."
-  spree_order_tracker:
-    couldnt_find_order: "Could not find order with the provided number and email address."
-    track_your_order: "Track your order"
